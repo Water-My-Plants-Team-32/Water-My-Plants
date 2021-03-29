@@ -23,8 +23,12 @@ const StyledButton = styled.button`
     margin: 2% 0 4% 0;
 `;
 
+const StyledP = styled.p`
+    margin: 0;
+`;
+
 export default function Login(props) {
-    const { newUser, change, submit, disable } = props
+    const { newUser, change, submit, disable, errors } = props
     
     const onChange = (event) => {
         const {name ,value} = event.target;
@@ -63,6 +67,9 @@ export default function Login(props) {
                 />
                 <StyledButton disabled={disable}>Sign Up</StyledButton>
             </StyledForm>
+            <StyledP>{errors.username}</StyledP>
+            <StyledP>{errors.password}</StyledP>
+            <StyledP>{errors.passwordConfirm}</StyledP>
         </StyledDiv>
     )
 }

@@ -197,10 +197,10 @@ function App() {
         </StyledHeader>
         <Switch>
           <Route path='/signup'>
-			  <SignUp newUser={newUser} change={signUpChange} submit={signUpSubmit} disable={disabled} />
+			  <SignUp newUser={newUser} change={signUpChange} submit={signUpSubmit} disable={disabled} errors={signUpErrors}/>
           </Route>
           <Route path='/login'>
-			  <Login user={loginForm} change={loginChange} submit={loginSubmit} disable={disabled} />
+			  <Login user={loginForm} change={loginChange} submit={loginSubmit} disable={disabled} errors={loginErrors}/>
           </Route>
           <Route exact path='/'>
           </Route>
