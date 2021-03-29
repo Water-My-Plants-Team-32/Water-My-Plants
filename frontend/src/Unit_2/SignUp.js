@@ -52,6 +52,13 @@ export default function Login(props) {
                     placeholder='Username'
                 />
                 <StyledInput 
+                    name='telephone'
+                    type='tel'
+                    value={newUser.telephone}
+                    onChange={onChange}
+                    placeholder='Enter a phone number'
+                />
+                <StyledInput 
                     name='password'
                     type='password'
                     value={newUser.password}

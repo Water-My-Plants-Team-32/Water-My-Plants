@@ -37,6 +37,7 @@ const StyledNavButton = styled.button`
 
 const initialUser = {
 	username: '',
+	telephone: '',
 	password: ''
 };
 
@@ -52,11 +53,13 @@ const initialDisabled = true
 // Yup form validation
 const loginSchema = yup.object().shape({
     username: yup.string().required('Username is required').min(3,'Username must be 3 chars long.'),
+	telephone: yup.number('Please provide a phone number'),
     password: yup.string().min(6, 'Password must be at least 6 chars long.')
 })
 
 const signUpSchema = yup.object().shape({
     username: yup.string().required('Username is required').min(3,'Username must be 3 chars long.'),
+	telephone: yup.number(),
     password: yup.string().min(6, 'Password must be at least 6 chars long.'),
 	passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
 })
@@ -109,6 +112,7 @@ function App() {
 	const loginSubmit = () => {
 		const toLogin = {
 			username:loginForm.username.trim(),
+			telephone:loginForm.telephone.trim(),
 			password:loginForm.password.trim()
 		};
 		setActiveUser(toLogin);
@@ -160,6 +164,7 @@ function App() {
 	const signUpSubmit = () => {
 		const toRegister = {
 			username:newUser.username.trim(),
+			telephone:newUser.telephone.trim(),
 			password:newUser.password.trim(),
 			passwordConfirm: newUser.passwordConfirm
 		};
@@ -167,7 +172,7 @@ function App() {
 	};
 
 	const postNewRegister = (toRegister) => {
-		axios.post('https://reqres.in/api/users', toRegister)
+		axios.post('https://app-water-my-plants.herokuapp.com/createnewuser', toRegister)
 		.then((res) => {
 			setUserList([res.data, ...userList])
 			setNewUser(initialSignUp)
