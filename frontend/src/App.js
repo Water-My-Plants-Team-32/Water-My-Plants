@@ -18,7 +18,7 @@ const StyledH2 = styled.h2`
   color: greenyellow;
   font-size:1.8rem;
   font-style:italic;
-
+  text-decoration:none;
 `;
 
 const StyledNav = styled.nav`
@@ -43,6 +43,7 @@ const initialUser = {
 
 const initialSignUp = {
 	username: '',
+	telephone: '',
 	password: '',
 	passwordConfirm: ''
 };
@@ -59,13 +60,13 @@ const loginSchema = yup.object().shape({
 
 const signUpSchema = yup.object().shape({
     username: yup.string().required('Username is required').min(3,'Username must be 3 chars long.'),
-	telephone: yup.number(),
+	telephone: yup.string(),
     password: yup.string().min(6, 'Password must be at least 6 chars long.'),
 	passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
 })
 
 function App() {
-	const [signUpErrors, setSignUpErrors] = useState(initialUser);
+	const [signUpErrors, setSignUpErrors] = useState(initialSignUp);
 	const [loginErrors, setLoginErrors] = useState(initialUser);
 	const [activeUser, setActiveUser] = useState(initialUser);
 	const [loginForm, setLoginForm] = useState(initialUser);
@@ -166,7 +167,6 @@ function App() {
 			username:newUser.username.trim(),
 			telephone:newUser.telephone.trim(),
 			password:newUser.password.trim(),
-			passwordConfirm: newUser.passwordConfirm
 		};
 		postNewRegister(toRegister);
 	};
