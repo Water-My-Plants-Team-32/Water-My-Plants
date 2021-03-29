@@ -24,7 +24,7 @@ const StyledButton = styled.button`
 `;
 
 export default function Login(props) {
-    const { newUser, change, submit } = props
+    const { newUser, change, submit, disable } = props
     
     const onChange = (event) => {
         const {name ,value} = event.target;
@@ -54,7 +54,14 @@ export default function Login(props) {
                     onChange={onChange}
                     placeholder='Create a password'
                 />
-                <StyledButton>Sign Up</StyledButton>
+                <StyledInput 
+                    name='passwordConfirm'
+                    type='password'
+                    value={newUser.passwordConfirm}
+                    onChange={onChange}
+                    placeholder='Confirm your password'
+                />
+                <StyledButton disabled={disable}>Sign Up</StyledButton>
             </StyledForm>
         </StyledDiv>
     )

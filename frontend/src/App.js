@@ -3,8 +3,9 @@ import SignUp from './Unit_2/SignUp'
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import * as yup from 'yup';
 
 const StyledHeader = styled.header`
   display:flex;
@@ -38,23 +39,72 @@ const initialUser = {
 	password: ''
 };
 
+const initialSignUp = {
+	username: '',
+	password: '',
+	passwordConfirm: ''
+};
+
 const initialUserList = [];
+const initialDisabled = true
+
+// Yup form validation
+const loginSchema = yup.object().shape({
+    username: yup.string().required('Username is required').min(3,'Username must be 3 chars long.'),
+    password: yup.string().min(6, 'Password must be at least 6 chars long.')
+})
+
+const signUpSchema = yup.object().shape({
+    username: yup.string().required('Username is required').min(3,'Username must be 3 chars long.'),
+    password: yup.string().min(6, 'Password must be at least 6 chars long.'),
+	passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
+})
 
 function App() {
-
-	const [activeUser, setActiveUser] = useState(initialUser)
+	const [signUpErrors, setSignUpErrors] = useState(initialUser);
+	const [loginErrors, setLoginErrors] = useState(initialUser);
+	const [activeUser, setActiveUser] = useState(initialUser);
 	const [loginForm, setLoginForm] = useState(initialUser);
-	const [newUser, setNewUser] = useState(initialUser);
-	const [userList, setUserList] = useState(initialUserList)
+	const [newUser, setNewUser] = useState(initialSignUp);
+	const [userList, setUserList] = useState(initialUserList);
+	const [disabled, setDisabled] = useState(initialDisabled);
 
 // Login page functions
 	const loginChange = (name, value) => {
+		
+		yup
+		.reach(loginSchema, name) // get to this part of the schema
+		//we can then run validate using the value
+		.validate(value) // validate this value
+		.then(() => {
+		// happy path and clear the error
+		setLoginErrors({
+			...loginErrors,
+			[name]: "",
+		});
+		})
+		// if the validation is unsuccessful, we can set the error message to the message
+		// returned from yup (that we created in our schema)
+		.catch((err) => {
+		setLoginErrors({
+			...loginErrors,
+			// validation error from schema
+			[name]: err.errors[0],
+		});
+		});
+
 		setLoginForm({
 			...loginForm,
 			[name]:value,
 		});
 	};
-	
+// Enable button if schema is valid	
+	useEffect(() => {
+		loginSchema.isValid(loginForm).then((valid) => {
+			setDisabled(!valid);
+		})
+	}, [loginForm])
+
 	const loginSubmit = () => {
 		const toLogin = {
 			username:loginForm.username.trim(),
@@ -69,18 +119,48 @@ function App() {
 	}, [activeUser])
 
 
-// Sign up page functions
+// SignUp page functions
 	const signUpChange = (name, value) => {
+		
+		yup
+		.reach(signUpSchema, name) // get to this part of the schema
+		//we can then run validate using the value
+		.validate(value) // validate this value
+		.then(() => {
+		// happy path and clear the error
+		setSignUpErrors({
+			...signUpErrors,
+			[name]: "",
+		});
+		})
+		// if the validation is unsuccessful, we can set the error message to the message
+		// returned from yup (that we created in our schema)
+		.catch((err) => {
+		setSignUpErrors({
+			...signUpErrors,
+			// validation error from schema
+			[name]: err.errors[0],
+		});
+		});
+		
 		setNewUser({
 			...newUser,
 			[name]:value,
 		});
 	};
 
+// Enable button if schema is valid	
+	useEffect(() => {
+		signUpSchema.isValid(newUser).then((valid) => {
+			setDisabled(!valid);
+		})
+	}, [newUser])
+
 	const signUpSubmit = () => {
 		const toRegister = {
 			username:newUser.username.trim(),
-			password:newUser.password.trim()
+			password:newUser.password.trim(),
+			passwordConfirm: newUser.passwordConfirm
 		};
 		postNewRegister(toRegister);
 	};
@@ -89,7 +169,7 @@ function App() {
 		axios.post('https://reqres.in/api/users', toRegister)
 		.then((res) => {
 			setUserList([res.data, ...userList])
-			setNewUser(initialUser)
+			setNewUser(initialSignUp)
 		})
 		.catch((err) => {
 			console.log(err)
@@ -117,10 +197,10 @@ function App() {
         </StyledHeader>
         <Switch>
           <Route path='/signup'>
-			  <SignUp newUser={newUser} change={signUpChange} submit={signUpSubmit} />
+			  <SignUp newUser={newUser} change={signUpChange} submit={signUpSubmit} disable={disabled} />
           </Route>
           <Route path='/login'>
-			  <Login user={loginForm} change={loginChange} submit={loginSubmit}/>
+			  <Login user={loginForm} change={loginChange} submit={loginSubmit} disable={disabled} />
           </Route>
           <Route exact path='/'>
           </Route>
