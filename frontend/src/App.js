@@ -1,5 +1,6 @@
 import Login from './Unit_2/Login'
 import SignUp from './Unit_2/SignUp'
+import Home from './Unit_2/Home'
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
 import styled from 'styled-components';
@@ -188,10 +189,10 @@ function App() {
 		  </Link>
           <StyledNav>
             <Link to='/login'>
-              <StyledNavButton style={{color:'white', backgroundColor:'greenyellow'}}>Login</StyledNavButton>
+            	<StyledNavButton style={{color:'white', backgroundColor:'greenyellow'}}>Login</StyledNavButton>
             </Link>  
             <Link to='/signup'>
-                <StyledNavButton>Sign Up</StyledNavButton>
+            	<StyledNavButton>Sign Up</StyledNavButton>
             </Link>
           </StyledNav>
         </StyledHeader>
@@ -203,6 +204,7 @@ function App() {
 			  <Login user={loginForm} change={loginChange} submit={loginSubmit} disable={disabled} errors={loginErrors}/>
           </Route>
           <Route exact path='/'>
+			  <Home />
           </Route>
         </Switch>
 
