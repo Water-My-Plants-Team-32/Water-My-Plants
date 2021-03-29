@@ -16,27 +16,40 @@ const StyledForm = styled.form`
 
 const StyledInput = styled.input`
     margin-bottom: 2%;
+    width: 120%;
+`;
+
+const StyledButton = styled.button`
+    margin: 2% 0 4% 0;
 `;
 
 export default function Login(props) {
+    const { user, change } = props;
+    
+    const onChange= (event) => {
+        const { name, value } = event.target
+        change(name, value)
+    }
+
     return (
         <StyledDiv>
             <h1>Login</h1>
             <StyledForm>
                 <StyledInput 
-                    name=''
-                    type=''
-                    value=''
-                    onChange=''
+                    name='username'
+                    type='text'
+                    value={user.username}
+                    onChange={onChange}
                     placeholder='Username'
                 />
                 <StyledInput 
-                    name=''
-                    type=''
-                    value=''
-                    onChange=''
+                    name='password'
+                    type='text'
+                    value={user.password}
+                    onChange={onChange}
                     placeholder='Password'
                 />
+                <StyledButton>Login</StyledButton>
             </StyledForm>
         </StyledDiv>
     )
