@@ -24,17 +24,22 @@ const StyledButton = styled.button`
 `;
 
 export default function Login(props) {
-    const { user, change } = props;
+    const { user, change, submit } = props;
     
     const onChange= (event) => {
         const { name, value } = event.target
         change(name, value)
     }
+    
+    const onSubmit = (event) => {
+        event.preventDefault();
+        submit();
+    }
 
     return (
         <StyledDiv>
             <h1>Login</h1>
-            <StyledForm>
+            <StyledForm onSubmit={onSubmit}>
                 <StyledInput 
                     name='username'
                     type='text'

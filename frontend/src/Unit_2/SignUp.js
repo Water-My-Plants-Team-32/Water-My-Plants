@@ -7,7 +7,7 @@ const StyledDiv = styled.div`
     align-items:center;
 `;
 
-const StyledForm = styled.div`
+const StyledForm = styled.form`
     margin: auto;
     display:flex;
     flex-direction:column;
@@ -24,17 +24,22 @@ const StyledButton = styled.button`
 `;
 
 export default function Login(props) {
-    const { newUser, change } = props
+    const { newUser, change, submit } = props
     
     const onChange = (event) => {
         const {name ,value} = event.target;
         change(name, value)
     }
 
+    const onSubmit = (event) => {
+        event.preventDefault();
+        submit();
+    }
+
     return (
         <StyledDiv>
             <h1>Sign Up</h1>
-            <StyledForm>
+            <StyledForm onSubmit={onSubmit}>
                 <StyledInput 
                     name='username'
                     type='text'

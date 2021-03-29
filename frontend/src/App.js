@@ -3,7 +3,8 @@ import SignUp from './Unit_2/SignUp'
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
 import styled from 'styled-components';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const StyledHeader = styled.header`
   display:flex;
@@ -32,16 +33,43 @@ const StyledNavButton = styled.button`
   outline:none;
 `;
 
-const currentUser = {
+const initialUser = {
 	username: '',
 	password: ''
-}
+};
+
+const initialUserList = [];
 
 function App() {
 
-	const [activeUser, setActiveUser] = useState(currentUser);
-	const [newUser, setNewUser] = useState(currentUser);
+	const [activeUser, setActiveUser] = useState(initialUser)
+	const [loginForm, setLoginForm] = useState(initialUser);
+	const [newUser, setNewUser] = useState(initialUser);
+	const [userList, setUserList] = useState(initialUserList)
 
+// Login page functions
+	const loginChange = (name, value) => {
+		setLoginForm({
+			...loginForm,
+			[name]:value,
+		});
+	};
+	
+	const loginSubmit = () => {
+		const toLogin = {
+			username:loginForm.username.trim(),
+			password:loginForm.password.trim()
+		};
+		setActiveUser(toLogin);
+		setLoginForm(initialUser)
+	};
+
+		useEffect(() => {
+		console.log(activeUser)
+	}, [activeUser])
+
+
+// Sign up page functions
 	const signUpChange = (name, value) => {
 		setNewUser({
 			...newUser,
@@ -49,12 +77,28 @@ function App() {
 		});
 	};
 
-	const loginChange = (name, value) => {
-		setActiveUser({
-			...activeUser,
-			[name]:value,
-		});
+	const signUpSubmit = () => {
+		const toRegister = {
+			username:newUser.username.trim(),
+			password:newUser.password.trim()
+		};
+		postNewRegister(toRegister);
 	};
+
+	const postNewRegister = (toRegister) => {
+		axios.post('https://reqres.in/api/users', toRegister)
+		.then((res) => {
+			setUserList([res.data, ...userList])
+			setNewUser(initialUser)
+		})
+		.catch((err) => {
+			console.log(err)
+		})
+	}
+
+	useEffect(() => {
+		console.log(userList)
+	}, [userList])
 
 	return (
     <div className='app'>
@@ -73,10 +117,10 @@ function App() {
         </StyledHeader>
         <Switch>
           <Route path='/signup'>
-			  <SignUp newUser={newUser} change={signUpChange} />
+			  <SignUp newUser={newUser} change={signUpChange} submit={signUpSubmit} />
           </Route>
           <Route path='/login'>
-			  <Login user={activeUser} change={loginChange}/>
+			  <Login user={loginForm} change={loginChange} submit={loginSubmit}/>
           </Route>
           <Route exact path='/'>
           </Route>
