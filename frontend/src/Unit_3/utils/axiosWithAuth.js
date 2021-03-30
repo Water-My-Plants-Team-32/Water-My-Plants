@@ -1,13 +1,14 @@
-import axios from "axios";
+import axios from 'axios';
+import { BASE_URL as baseURL } from '../../Unit_2/BASE_URL';
 
 export const axiosWithAuth = () => {
-    const token = window.localStorage.getItem("token");
-    console.log(token);
+	const token = window.localStorage.getItem('token');
+	console.log(token);
 
-    return axios.create({
-        headers:{
-            Authorization: token,
-        },
-        //baseURL: 'http://localhost:5000/api',
-    });
+	return axios.create({
+		baseURL,
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
 };
