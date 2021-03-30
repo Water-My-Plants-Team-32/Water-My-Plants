@@ -5,7 +5,7 @@ import { StyledPlantList } from '../StyledComponents/StyledPlantList';
 
 import { plantsData } from '../../plantData';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { BASE_URL as baseURL } from '../../Unit_2/BASE_URL';
+import { BASE_URL_JAVA as baseURL } from '../../Unit_2/BASE_URL';
 
 const PlantList = () => {
 	const [plantList, setPlantList] = useState([]);
