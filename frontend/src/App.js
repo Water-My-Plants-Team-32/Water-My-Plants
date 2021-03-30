@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
 import {BASE_URL} from './Unit_2/BASE_URL';
+import CreatePlant from './Unit_3/components/CreatePlant';
 import PrivateRoute from './Unit_3/utils/PrivateRoute';
 
 import PlantList from './Unit_3/components/PlantList';
@@ -208,6 +209,7 @@ function App() {
         </StyledHeader>
         <Switch>
 		  <Route path='/plants' component={PlantList} />
+		  <Route exact path="/create" component={CreatePlant} />
           <Route path='/signup'>
 			  <SignUp newUser={newUser} change={signUpChange} submit={signUpSubmit} disable={disabled} errors={signUpErrors}/>
           </Route>
