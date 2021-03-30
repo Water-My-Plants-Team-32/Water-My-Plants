@@ -216,7 +216,7 @@ function App() {
 				</StyledNav>
 			</StyledHeader>
 			<Switch>
-				<Route path='/plants' component={PlantList} />
+				<PrivateRoute path='/plants' component={PlantList} />
 				<Route path='/signup'>
 					<SignUp
 						newUser={newUser}
