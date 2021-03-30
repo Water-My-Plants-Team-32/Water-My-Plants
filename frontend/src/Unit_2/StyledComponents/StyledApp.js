@@ -5,7 +5,7 @@ export const StyledApp = styled.header`
   justify-content: space-around;
   align-items:center;
   & h2{
-    color: greenyellow;
+    color: #98EA28;
     font-size:1.8rem;
     font-style:italic;
     text-decoration:none;
@@ -20,7 +20,7 @@ export const StyledApp = styled.header`
     padding:10px;
     font-size: 1.2rem;
     border-radius: 10rem;
-    border: none;
+    border: 1px solid black;
     outline:none;
   }
 `;

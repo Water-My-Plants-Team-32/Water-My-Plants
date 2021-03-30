@@ -16,7 +16,7 @@ function App() {
 		  </Link>
           <nav>
             <Link to='/login'>
-            	<button style={{color:'white', backgroundColor:'greenyellow'}}>Login</button>
+            	<button style={{color:'white', backgroundColor:'#98EA28'}}>Login</button>
             </Link>  
             <Link to='/signup'>
             	<button>Sign Up</button>

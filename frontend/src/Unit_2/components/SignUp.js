@@ -1,7 +1,7 @@
-import * as yup from 'yup';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../BASE_URL';
+import { useState, useEffect } from 'react';
+import * as yup from 'yup';
 import { StyledForms } from '../StyledComponents/StyledForms';
 
 const signUpSchema = yup.object().shape({

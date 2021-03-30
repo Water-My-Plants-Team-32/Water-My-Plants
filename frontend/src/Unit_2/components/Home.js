@@ -1,5 +1,4 @@
 import React from "react";
-import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { StyledHome } from '../StyledComponents/StyledHome'
 
@@ -10,7 +9,7 @@ export default function Home (props) {
                 <div>
                     <h1>Never forget to water your plants again!</h1>
                     <Link to='/plants'>
-                        <button>Plants</button>
+                        <button>Pick a Plant</button>
                     </Link>
                 </div>
             </StyledHome>
