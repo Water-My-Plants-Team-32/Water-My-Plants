@@ -11,6 +11,7 @@ export default function Home (props) {
                     <Link to='/plants'>
                         <button>Pick a Plant</button>
                     </Link>
+                    <footer>&#169; ttwebft32</footer>
                 </div>
             </StyledHome>
         </div>

@@ -7,7 +7,8 @@ export const StyledHome = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 80vh;
+    border-top: 1px solid black;
+    height: 90vh;
     width: 100%;
     display:flex;
     flex-direction: column;
@@ -21,10 +22,10 @@ export const StyledHome = styled.div`
         justify-content:space-around;        
     }
     & h1{
-        font-size: 3rem;
+        font-size: 3.5rem;
         font-style: italic;
         text-align:center;
-        color: orange;
+        color: #4291f5;
         text-shadow: 2px 2px white;
     }
     & button{
@@ -38,6 +39,9 @@ export const StyledHome = styled.div`
         font-size: 16px;
         letter-spacing: .08em;
         text-transform: uppercase;
+    } & footer{
+        margin: 1%;
+        justify-content: flex-start;
     }
     
 `;

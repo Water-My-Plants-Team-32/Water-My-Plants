@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL } from '../BASE_URL';
+import { BASE_URL_NODE, BASE_URL_JAVA } from '../BASE_URL';
 import { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { StyledForms } from '../StyledComponents/StyledForms';
@@ -60,7 +60,7 @@ export default function Login(props) {
 		e.preventDefault();
 		axios
 			.post(
-				`${BASE_URL}/login`,
+				`${BASE_URL_JAVA}/login`, 
 				`grant_type=password&username=${credentials.username}&password=${credentials.password}`,
 				{
 					headers: {
@@ -73,7 +73,6 @@ export default function Login(props) {
 			.then((res) => {
 				console.log(res.data);
 				localStorage.setItem("token", res.data.access_token);
-				// localStorage.setItem("token", res.data.id);
 				props.history.push("/plants");
                 console.log(credentials)
 			})

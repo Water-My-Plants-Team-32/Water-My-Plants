@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { BASE_URL } from '../BASE_URL';
+import { BASE_URL_NODE, BASE_URL_JAVA } from '../BASE_URL';
 import { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { StyledForms } from '../StyledComponents/StyledForms';
 
 const signUpSchema = yup.object().shape({
     username: yup.string().required('Username is required').min(3,'Username must be 3 chars long.'),
-	telephone: yup.string('Please provide a phone number'),
+	phonenumber: yup.string('Please provide a phone number'),
     password: yup.string().min(6, 'Password must be at least 6 chars long.'),
 	passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
 })
@@ -15,7 +15,7 @@ const initialDisabled = true
 const initialUserList = [];
 const initialSignUp = {
 	username: '',
-	telephone: '',
+	phonenumber: '',
 	password: '',
 	passwordConfirm: ''
 };
@@ -25,7 +25,6 @@ export default function Login(props) {
     
     const [signUpErrors, setSignUpErrors] = useState(initialSignUp);
     const [newUser, setNewUser] = useState(initialSignUp);
-	const [userList, setUserList] = useState(initialUserList);
 	const [disabled, setDisabled] = useState(initialDisabled);
 
     const signUpChange = (event) => {
@@ -70,26 +69,24 @@ export default function Login(props) {
 		event.preventDefault();
         const toRegister = {
 			username:newUser.username.trim(),
-			telephone:newUser.telephone.trim(),
+			phonenumber:newUser.phonenumber,
 			password:newUser.password.trim(),
 		};
 		postNewRegister(toRegister);
 	};
 	
 	const postNewRegister = (toRegister) => {
-		axios.post(`${BASE_URL}/createnewuser`, toRegister)
+		axios.post(`${BASE_URL_JAVA}/createnewuser`, toRegister)
 		.then((res) => {
-			setUserList([res.data, ...userList])
 			setNewUser(initialSignUp)
+			localStorage.setItem("token", res.data.access_token);
+			props.history.push("/plants");
+			console.log(res)
 		})
 		.catch((err) => {
 			console.log(err)
 		})
 	}
-
-	useEffect(() => {
-		console.log(userList)
-	}, [userList])
 
     return (
         <StyledForms>
@@ -103,9 +100,9 @@ export default function Login(props) {
                     placeholder='Username'
                 />
                 <input 
-                    name='telephone'
+                    name='phonenumber'
                     type='tel'
-                    value={newUser.telephone}
+                    value={newUser.phonenumber}
                     onChange={signUpChange}
                     placeholder='Enter a phone number'
                 />

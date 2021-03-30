@@ -18,6 +18,9 @@ export const StyledForms = styled.div`
         height: 20px;
         padding-left:5%;
     }
+    & input:focus {
+        outline: none;
+    }
     & button {
         margin: 2% 0 4% 0;
     }
