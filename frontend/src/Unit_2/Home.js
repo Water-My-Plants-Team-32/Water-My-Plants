@@ -47,8 +47,8 @@ export default function Home (props) {
             <HeroImage>
                 <HeroContent>
                     <Slogan>Never forget to water your plants again!</Slogan>
-                    <Link to='/'>
-                        <StyledButton className='plants-btn'>Plants</StyledButton>
+                    <Link to='/plants'>
+                        <StyledButton>Plants</StyledButton>
                     </Link>
                 </HeroContent>
             </HeroImage>
