@@ -52,13 +52,6 @@ export default function Login(props) {
                     placeholder='Username'
                 />
                 <StyledInput 
-                    name='telephone'
-                    type='tel'
-                    value={user.telephone}
-                    onChange={onChange}
-                    placeholder='Phone number'
-                />
-                <StyledInput 
                     name='password'
                     type='password'
                     value={user.password}
@@ -68,7 +61,6 @@ export default function Login(props) {
                 <StyledButton disabled={disable}>Login</StyledButton>
             </StyledForm>
             <StyledP>{errors.username}</StyledP>
-            <StyledP>{errors.telephone}</StyledP>
             <StyledP>{errors.password}</StyledP>
         </StyledDiv>
     )

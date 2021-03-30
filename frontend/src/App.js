@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
+import {BASE_URL} from './Unit_2/BASE_URL'
 
 const StyledHeader = styled.header`
   display:flex;
@@ -29,15 +30,15 @@ const StyledNav = styled.nav`
 const StyledNavButton = styled.button`
   width: 15%;
   margin: 4% 1%;
-  padding:1%;
-  border-radius: 15%;
+  padding:10px;
+  font-size: 1.2rem;
+  border-radius: 10rem;
   border: none;
   outline:none;
 `;
 
 const initialUser = {
 	username: '',
-	telephone: '',
 	password: ''
 };
 
@@ -54,13 +55,12 @@ const initialDisabled = true
 // Yup form validation
 const loginSchema = yup.object().shape({
     username: yup.string().required('Username is required').min(3,'Username must be 3 chars long.'),
-	telephone: yup.number('Please provide a phone number'),
     password: yup.string().min(6, 'Password must be at least 6 chars long.')
 })
 
 const signUpSchema = yup.object().shape({
     username: yup.string().required('Username is required').min(3,'Username must be 3 chars long.'),
-	telephone: yup.string(),
+	telephone: yup.string('Please provide a phone number'),
     password: yup.string().min(6, 'Password must be at least 6 chars long.'),
 	passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
 })
@@ -110,10 +110,10 @@ function App() {
 		})
 	}, [loginForm])
 
+// Login submit
 	const loginSubmit = () => {
 		const toLogin = {
 			username:loginForm.username.trim(),
-			telephone:loginForm.telephone.trim(),
 			password:loginForm.password.trim()
 		};
 		setActiveUser(toLogin);
@@ -162,6 +162,7 @@ function App() {
 		})
 	}, [newUser])
 
+// Sign up Submit
 	const signUpSubmit = () => {
 		const toRegister = {
 			username:newUser.username.trim(),
@@ -170,9 +171,9 @@ function App() {
 		};
 		postNewRegister(toRegister);
 	};
-
+	
 	const postNewRegister = (toRegister) => {
-		axios.post('https://app-water-my-plants.herokuapp.com/createnewuser', toRegister)
+		axios.post(`${BASE_URL}/createnewuser`, toRegister)
 		.then((res) => {
 			setUserList([res.data, ...userList])
 			setNewUser(initialSignUp)
