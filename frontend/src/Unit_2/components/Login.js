@@ -1,35 +1,8 @@
-import styled from 'styled-components';
 import axios from 'axios';
-import { BASE_URL } from './BASE_URL';
+import { BASE_URL_NODE, BASE_URL_JAVA } from '../BASE_URL';
 import { useState, useEffect } from 'react';
 import * as yup from 'yup';
-
-const StyledDiv = styled.div`
-    margin: auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-`;
-
-const StyledForm = styled.form`
-    margin: auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-`;
-
-const StyledInput = styled.input`
-    margin-bottom: 2%;
-    width: 120%;
-`;
-
-const StyledButton = styled.button`
-    margin: 2% 0 4% 0;
-`;
-
-const StyledP = styled.p`
-    margin: 0;
-`;
+import { StyledForms } from '../StyledComponents/StyledForms';
 
 // Yup form validation
 const loginSchema = yup.object().shape({
@@ -40,18 +13,12 @@ const loginSchema = yup.object().shape({
 const initialLogin = { username: "", password: ""}
 const initialDisabled = true
 
-
 export default function Login(props) {
     
     const [disabled, setDisabled] = useState(initialDisabled);
     const [loginErrors, setLoginErrors] = useState(initialLogin);
     const [credentials, setCredentials] = useState(initialLogin);
     
-    // const onChange= (event) => {
-    //     const { name, value } = event.target
-    //     change(name, value)
-    // }
-
     const change = (event) => {
 		const { name, value } = event.target
 		yup
@@ -93,7 +60,7 @@ export default function Login(props) {
 		e.preventDefault();
 		axios
 			.post(
-				`${BASE_URL}/login`,
+				`${BASE_URL_JAVA}/login`, 
 				`grant_type=password&username=${credentials.username}&password=${credentials.password}`,
 				{
 					headers: {
@@ -106,34 +73,36 @@ export default function Login(props) {
 			.then((res) => {
 				console.log(res.data);
 				localStorage.setItem("token", res.data.access_token);
-				// localStorage.setItem("token", res.data.id);
 				props.history.push("/plants");
                 console.log(credentials)
-			});
+			})
+			.catch((err) => {
+				setCredentials(initialLogin)
+			})
 	};
 
     return (
-        <StyledDiv>
+        <StyledForms>
             <h1>Login</h1>
-            <StyledForm onSubmit={login}>
-                <StyledInput 
+            <form onSubmit={login}>
+                <input 
                     name='username'
                     type='text'
                     value={credentials.username}
                     onChange={change}
                     placeholder='Username'
                 />
-                <StyledInput 
+                <input 
                     name='password'
                     type='password'
                     value={credentials.password}
                     onChange={change}
                     placeholder='Password'
                 />
-                <StyledButton disabled={disabled}>Login</StyledButton>
-            </StyledForm>
-            <StyledP>{loginErrors.username}</StyledP>
-            <StyledP>{loginErrors.password}</StyledP>
-        </StyledDiv>
+                <button disabled={disabled}>Login</button>
+            </form>
+            <p>{loginErrors.username}</p>
+            <p>{loginErrors.password}</p>
+        </StyledForms>
     )
 }
