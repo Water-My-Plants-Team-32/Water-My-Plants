@@ -21,6 +21,9 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
     margin-bottom: 2%;
     width: 120%;
+    border-radius: 10rem;
+    height: 20px;
+    padding-left:5%;
 `;
 
 const StyledButton = styled.button`
@@ -40,18 +43,12 @@ const loginSchema = yup.object().shape({
 const initialLogin = { username: "", password: ""}
 const initialDisabled = true
 
-
 export default function Login(props) {
     
     const [disabled, setDisabled] = useState(initialDisabled);
     const [loginErrors, setLoginErrors] = useState(initialLogin);
     const [credentials, setCredentials] = useState(initialLogin);
     
-    // const onChange= (event) => {
-    //     const { name, value } = event.target
-    //     change(name, value)
-    // }
-
     const change = (event) => {
 		const { name, value } = event.target
 		yup
