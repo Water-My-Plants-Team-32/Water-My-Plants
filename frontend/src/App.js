@@ -1,28 +1,28 @@
-import Login from './Unit_2/Login'
-import SignUp from './Unit_2/SignUp'
-import Home from './Unit_2/Home'
+import Login from './Unit_2/components/Login'
+import SignUp from './Unit_2/components/SignUp'
+import Home from './Unit_2/components/Home'
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
 import PrivateRoute from './Unit_3/utils/PrivateRoute';
 import PlantList from './Unit_3/components/PlantList';
-import { StyledHeader, StyledH2, StyledNav, StyledNavButton } from './Unit_2/styled-components';
+import { StyledApp } from './Unit_2/StyledComponents/StyledApp';
 
 function App() {
 	return (
     <div className='app'>
-        <StyledHeader>
+        <StyledApp>
           <Link to='/'>
-		  	<StyledH2>Water My Plants!</StyledH2>
+		  	<h2>Water My Plants!</h2>
 		  </Link>
-          <StyledNav>
+          <nav>
             <Link to='/login'>
-            	<StyledNavButton style={{color:'white', backgroundColor:'greenyellow'}}>Login</StyledNavButton>
+            	<button style={{color:'white', backgroundColor:'greenyellow'}}>Login</button>
             </Link>  
             <Link to='/signup'>
-            	<StyledNavButton>Sign Up</StyledNavButton>
+            	<button>Sign Up</button>
             </Link>
-          </StyledNav>
-        </StyledHeader>
+          </nav>
+        </StyledApp>
         <Switch>
 		  <Route path='/plants' component={PlantList} />
           <Route path='/signup' component={SignUp}/>

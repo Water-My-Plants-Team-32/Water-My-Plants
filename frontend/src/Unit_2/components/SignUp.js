@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BASE_URL } from './BASE_URL';
-import { StyledDiv, StyledForm, StyledInput, StyledButton, StyledP } from './styled-components';
+import { BASE_URL } from '../BASE_URL';
+import { StyledForms } from '../StyledComponents/StyledForms';
 
 const signUpSchema = yup.object().shape({
     username: yup.string().required('Username is required').min(3,'Username must be 3 chars long.'),
@@ -92,42 +92,42 @@ export default function Login(props) {
 	}, [userList])
 
     return (
-        <StyledDiv>
+        <StyledForms>
             <h1>Sign Up</h1>
-            <StyledForm onSubmit={signUpSubmit}>
-                <StyledInput 
+            <form onSubmit={signUpSubmit}>
+                <input 
                     name='username'
                     type='text'
                     value={newUser.username}
                     onChange={signUpChange}
                     placeholder='Username'
                 />
-                <StyledInput 
+                <input 
                     name='telephone'
                     type='tel'
                     value={newUser.telephone}
                     onChange={signUpChange}
                     placeholder='Enter a phone number'
                 />
-                <StyledInput 
+                <input 
                     name='password'
                     type='password'
                     value={newUser.password}
                     onChange={signUpChange}
                     placeholder='Create a password'
                 />
-                <StyledInput 
+                <input 
                     name='passwordConfirm'
                     type='password'
                     value={newUser.passwordConfirm}
                     onChange={signUpChange}
                     placeholder='Confirm your password'
                 />
-                <StyledButton disabled={disabled}>Sign Up</StyledButton>
-            </StyledForm>
-            <StyledP>{signUpErrors.username}</StyledP>
-            <StyledP>{signUpErrors.password}</StyledP>
-            <StyledP>{signUpErrors.passwordConfirm}</StyledP>
-        </StyledDiv>
+                <button disabled={disabled}>Sign Up</button>
+            </form>
+            <p>{signUpErrors.username}</p>
+            <p>{signUpErrors.password}</p>
+            <p>{signUpErrors.passwordConfirm}</p>
+        </StyledForms>
     )
 }

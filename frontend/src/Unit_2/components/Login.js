@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { BASE_URL } from './BASE_URL';
+import { BASE_URL } from '../BASE_URL';
 import { useState, useEffect } from 'react';
 import * as yup from 'yup';
-import { StyledDiv, StyledForm, StyledInput, StyledButton, StyledP } from './styled-components';
+import { StyledForms } from '../StyledComponents/StyledForms';
 
 // Yup form validation
 const loginSchema = yup.object().shape({
@@ -80,27 +80,27 @@ export default function Login(props) {
 	};
 
     return (
-        <StyledDiv>
+        <StyledForms>
             <h1>Login</h1>
-            <StyledForm onSubmit={login}>
-                <StyledInput 
+            <form onSubmit={login}>
+                <input 
                     name='username'
                     type='text'
                     value={credentials.username}
                     onChange={change}
                     placeholder='Username'
                 />
-                <StyledInput 
+                <input 
                     name='password'
                     type='password'
                     value={credentials.password}
                     onChange={change}
                     placeholder='Password'
                 />
-                <StyledButton disabled={disabled}>Login</StyledButton>
-            </StyledForm>
-            <StyledP>{loginErrors.username}</StyledP>
-            <StyledP>{loginErrors.password}</StyledP>
-        </StyledDiv>
+                <button disabled={disabled}>Login</button>
+            </form>
+            <p>{loginErrors.username}</p>
+            <p>{loginErrors.password}</p>
+        </StyledForms>
     )
 }
