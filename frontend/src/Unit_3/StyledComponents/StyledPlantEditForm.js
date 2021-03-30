@@ -10,7 +10,8 @@ export const StyledPlantEditForm = styled.form`
 	& .form-input-container {
 		margin-top: 25px;
 	}
-	& input {
+	& input,
+	select {
 		width: 90%;
 		height: 30px;
 		font-size: 1.2rem;

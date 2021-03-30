@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PlantEditForm from './PlantEditForm';
 import { StyledPlantCard } from '../StyledComponents/StyledPlantCard';
 
-const PlantCard = ({ plantInfo, updatePlantList, updatePlant }) => {
+const PlantCard = ({ plantInfo, updatePlantList, updatePlants }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const handleDelete = (id) => {
 		updatePlantList(id);
@@ -15,15 +15,19 @@ const PlantCard = ({ plantInfo, updatePlantList, updatePlant }) => {
 	return (
 		<StyledPlantCard>
 			{isEditing ? (
-				<PlantEditForm plantInfo={plantInfo} setIsEditing={setIsEditing} />
+				<PlantEditForm
+					plantInfo={plantInfo}
+					setIsEditing={setIsEditing}
+					updatePlants={updatePlants}
+				/>
 			) : (
 				<>
-					<h2>{plantInfo.name}</h2>
+					<h2>{plantInfo.nickname}</h2>
 					<h3>
-						<i>{plantInfo.scientificName}</i>
+						<i>{plantInfo.species}</i>
 					</h3>
 					<img src={plantInfo.img} alt={plantInfo.name} />
-					<p>Watering Frequency: {plantInfo.watering} time(s) a day</p>
+					<p>Watering Frequency: {plantInfo.h2ofrequency}</p>
 					<div className='card-btn-container'>
 						<button className='edit' onClick={() => handleEdit(plantInfo)}>
 							Edit

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { baseURL } from './baseURL';
+import { BASE_URL as baseURL } from '../../Unit_2/BASE_URL';
 
 export const axiosWithAuth = () => {
 	const token = window.localStorage.getItem('token');
@@ -8,7 +8,7 @@ export const axiosWithAuth = () => {
 	return axios.create({
 		baseURL,
 		headers: {
-			Authorization: token,
+			Authorization: `Bearer ${token}`,
 		},
 	});
 };
