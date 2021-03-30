@@ -71,8 +71,8 @@ const signUpSchema = yup.object().shape({
 function App() {
 	const [signUpErrors, setSignUpErrors] = useState(initialSignUp);
 	// const [loginErrors, setLoginErrors] = useState(initialUser);
-	const [activeUser, setActiveUser] = useState(initialUser);
-	const [loginForm, setLoginForm] = useState(initialUser);
+	// const [activeUser, setActiveUser] = useState(initialUser);
+	// const [loginForm, setLoginForm] = useState(initialUser);
 	const [newUser, setNewUser] = useState(initialSignUp);
 	const [userList, setUserList] = useState(initialUserList);
 	const [disabled, setDisabled] = useState(false);
@@ -114,14 +114,14 @@ function App() {
 	// }, [loginForm])
 
 // Login submit
-	const loginSubmit = () => {
-		const toLogin = {
-			username:loginForm.username.trim(),
-			password:loginForm.password.trim()
-		};
-		setActiveUser(toLogin);
-		setLoginForm(initialUser)
-	};
+	// const loginSubmit = () => {
+	// 	const toLogin = {
+	// 		username:loginForm.username.trim(),
+	// 		password:loginForm.password.trim()
+	// 	};
+	// 	setActiveUser(toLogin);
+	// 	setLoginForm(initialUser)
+	// };
 
 	// 	useEffect(() => {
 	// 	console.log(activeUser)
