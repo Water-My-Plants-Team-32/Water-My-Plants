@@ -1,38 +1,8 @@
-import styled from 'styled-components';
 import * as yup from 'yup';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BASE_URL } from './BASE_URL';
-
-const StyledDiv = styled.div`
-    margin: auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-`;
-
-const StyledForm = styled.form`
-    margin: auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-`;
-
-const StyledInput = styled.input`
-    margin-bottom: 2%;
-    width: 120%;
-    border-radius: 10rem;
-    height: 20px;
-    padding-left:5%;
-`;
-
-const StyledButton = styled.button`
-    margin: 2% 0 4% 0;
-`;
-
-const StyledP = styled.p`
-    margin: 0;
-`;
+import { StyledDiv, StyledForm, StyledInput, StyledButton, StyledP } from './styled-components';
 
 const signUpSchema = yup.object().shape({
     username: yup.string().required('Username is required').min(3,'Username must be 3 chars long.'),

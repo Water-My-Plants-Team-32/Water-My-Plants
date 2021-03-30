@@ -3,38 +3,9 @@ import SignUp from './Unit_2/SignUp'
 import Home from './Unit_2/Home'
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
-import styled from 'styled-components';
-
 import PrivateRoute from './Unit_3/utils/PrivateRoute';
 import PlantList from './Unit_3/components/PlantList';
-
-const StyledHeader = styled.header`
-  display:flex;
-  justify-content: space-around;
-  align-items:center;
-`;
-
-const StyledH2 = styled.h2`
-  color: greenyellow;
-  font-size:1.8rem;
-  font-style:italic;
-  text-decoration:none;
-`;
-
-const StyledNav = styled.nav`
-  width: 50%;
-  text-align:end;
-`;
-
-const StyledNavButton = styled.button`
-  width: 15%;
-  margin: 4% 1%;
-  padding:10px;
-  font-size: 1.2rem;
-  border-radius: 10rem;
-  border: none;
-  outline:none;
-`;
+import { StyledHeader, StyledH2, StyledNav, StyledNavButton } from './Unit_2/styled-components';
 
 function App() {
 	return (
