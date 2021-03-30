@@ -7,7 +7,10 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
-import {BASE_URL} from './Unit_2/BASE_URL'
+import {BASE_URL} from './Unit_2/BASE_URL';
+import PrivateRoute from './Unit_3/utils/PrivateRoute';
+
+import PlantList from './Unit_3/components/PlantList';
 
 const StyledHeader = styled.header`
   display:flex;
@@ -64,6 +67,7 @@ const signUpSchema = yup.object().shape({
     password: yup.string().min(6, 'Password must be at least 6 chars long.'),
 	passwordConfirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
 })
+
 
 function App() {
 	const [signUpErrors, setSignUpErrors] = useState(initialSignUp);
@@ -203,6 +207,7 @@ function App() {
           </StyledNav>
         </StyledHeader>
         <Switch>
+		  <Route path='/plants' component={PlantList} />
           <Route path='/signup'>
 			  <SignUp newUser={newUser} change={signUpChange} submit={signUpSubmit} disable={disabled} errors={signUpErrors}/>
           </Route>
@@ -217,5 +222,6 @@ function App() {
     </div>
   );
 };
+
 
 export default App;
