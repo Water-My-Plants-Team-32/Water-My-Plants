@@ -76,7 +76,10 @@ export default function Login(props) {
 				// localStorage.setItem("token", res.data.id);
 				props.history.push("/plants");
                 console.log(credentials)
-			});
+			})
+			.catch((err) => {
+				setCredentials(initialLogin)
+			})
 	};
 
     return (
