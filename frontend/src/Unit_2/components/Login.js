@@ -3,7 +3,7 @@ import { BASE_URL_NODE, BASE_URL_JAVA } from '../BASE_URL';
 import { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { StyledForms } from '../StyledComponents/StyledForms';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 // Yup form validation
 const loginSchema = yup.object().shape({
