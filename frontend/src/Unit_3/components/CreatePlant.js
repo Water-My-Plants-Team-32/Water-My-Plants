@@ -21,7 +21,6 @@ const CreatePlant = () => {
 		axiosWithAuth()
 			.get('/api/users/getuserinfo')
 			.then((response) => {
-				console.log(response);
 				setUser(response.data);
 			})
 			.catch((error) => {
@@ -39,12 +38,11 @@ const CreatePlant = () => {
 		const addPlant = {
 			nickname: form.nickname,
 			species: form.species,
-			h2oFrequency: form.h2oFrequency,
+			h2ofrequency: form.h2oFrequency,
 		};
 		axiosWithAuth()
 			.post(`/api/plants/plant/${user.userid}`, addPlant)
 			.then((res) => {
-				console.log(res);
 				history.push('/plants');
 			})
 			.catch((err) => console.log(err));

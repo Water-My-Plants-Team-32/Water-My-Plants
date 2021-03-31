@@ -9,7 +9,6 @@ const PlantCard = ({ plantInfo, updatePlantList, updatePlants }) => {
 		axiosWithAuth()
 			.delete(`/api/plants/plant/${id}`)
 			.then((res) => {
-				console.log('delete res: ', res);
 				updatePlantList(id);
 			})
 			.catch((err) => {

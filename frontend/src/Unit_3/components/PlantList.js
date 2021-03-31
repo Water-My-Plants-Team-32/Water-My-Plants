@@ -24,7 +24,6 @@ const PlantList = () => {
 	};
 
 	const updatePlants = (newPlant) => {
-		console.log('newPlant: ', newPlant);
 		const newPlantList = plantList.map((plant) => {
 			if (plant.plantid === newPlant.plantid) {
 				return newPlant;
