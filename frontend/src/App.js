@@ -37,6 +37,7 @@ function App() {
 						<>
 							<Link to='/'>
 								<button
+									className='log'
 									onClick={logout}
 								>
 									Logout
@@ -49,7 +50,7 @@ function App() {
 					) : (
 						<>
 							<Link to='/login'>
-								<button>
+								<button className='log'>
 									Login
 								</button>
 							</Link>
