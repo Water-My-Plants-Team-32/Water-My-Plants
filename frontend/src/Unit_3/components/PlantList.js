@@ -40,13 +40,18 @@ const PlantList = () => {
 		const newPlantList = plantList.filter((plant) => plant.id !== id);
 		setPlantList(newPlantList);
 	};
+
 	const updatePlants = (newPlant) => {
+		console.log('newPlant: ', newPlant);
 		const newPlantList = plantList.map((plant) => {
+			console.log('plant.plantid: ', plant.plantid);
+			console.log('newPlant.plantid: ', newPlant.plantid);
 			if (plant.plantid === newPlant.plantid) {
 				return newPlant;
 			}
 			return plant;
 		});
+		console.log('newPlantList: ', newPlantList);
 		setPlantList(newPlantList);
 	};
 
@@ -57,7 +62,6 @@ const PlantList = () => {
 				plantInfo={plant}
 				updatePlantList={updatePlantList}
 				updatePlants={updatePlants}
-				// updatePlants={}
 			/>
 		));
 	};
