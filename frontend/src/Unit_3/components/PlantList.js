@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { StyledPlantList } from '../StyledComponents/StyledPlantList';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { BASE_URL_JAVA as baseURL } from '../../Unit_2/BASE_URL';
+import { baseURL } from '../../Unit_3/utils/baseURL';
 import PlantCard from './PlantCard';
 
 const PlantList = () => {

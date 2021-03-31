@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL_NODE, BASE_URL_JAVA } from '../BASE_URL';
+import { baseURL } from '../../Unit_3/utils/baseURL';
 import { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { StyledForms } from '../StyledComponents/StyledForms';
@@ -63,7 +63,7 @@ const Login = (props) => {
 		e.preventDefault();
 		axios
 			.post(
-				`${BASE_URL_JAVA}/login`,
+				`${baseURL}/login`,
 				`grant_type=password&username=${credentials.username}&password=${credentials.password}`,
 				{
 					headers: {
