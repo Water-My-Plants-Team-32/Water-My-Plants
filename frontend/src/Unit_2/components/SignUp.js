@@ -12,7 +12,6 @@ const signUpSchema = yup.object().shape({
 })
 
 const initialDisabled = true
-const initialUserList = [];
 const initialSignUp = {
 	username: '',
 	phonenumber: '',
