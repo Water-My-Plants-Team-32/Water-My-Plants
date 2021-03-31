@@ -14,6 +14,12 @@ export const StyledForm = styled.form`
     width: 400px;
     margin-right: 50px;
   }
+  select {
+    width: 367px;
+    height: 30px;
+    margin-right: 90px;
+    margin-bottom: 25px;
+}
   button {
     align-self: center;
   }
