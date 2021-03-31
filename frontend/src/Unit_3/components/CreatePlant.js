@@ -6,7 +6,7 @@ import { StyledForm, ContainerDiv } from '../StyledComponents/StyledCreatePlant'
 const initialState = {
   nickname: "",
   species: "",
-  h2oFrequency: ""
+  h2ofrequency: ""
 };
 
 const CreatePlant = () => {
@@ -18,7 +18,6 @@ const CreatePlant = () => {
       axiosWithAuth()
           .get('/api/users/getuserinfo')
           .then((response) => {
-            console.log(response)
             setUser(response.data)
           })
           .catch((error) => {
@@ -36,15 +35,13 @@ const CreatePlant = () => {
     const addPlant = {
       nickname: form.nickname,
       species: form.species,
-      h2oFrequency: form.h2oFrequency
+      h2ofrequency: form.h2ofrequency
     };
-    console.log(addPlant);
-    console.log(user.userid);
+    
     axiosWithAuth()
       .post(`/api/plants/plant/${user.userid}`, addPlant)
       .then((res) => {
-        console.log(res);
-        history.push("/plantlist");
+        history.push("/plants");
        })
       .catch((err) => console.log(err));
   };
@@ -54,7 +51,7 @@ const CreatePlant = () => {
       <h2 style={{ color: "white" }}>Add Your Plant</h2>
       <StyledForm onSubmit={submitAddPlant}>
         <label>
-          Nick Name:
+          Nick Name: 
           <input
             type="text"
             name="nickname"
@@ -63,7 +60,7 @@ const CreatePlant = () => {
           />
         </label>
         <label>
-          Speices:
+          Speices: 
           <input
             type="text"
             name="species"
@@ -72,13 +69,22 @@ const CreatePlant = () => {
           />
         </label>
         <label>
-          h2oFrequency:
-          <input
-            type="text"
-            name="h2oFrequency"
-            value={form.h2oFrequency}
-            onChange={changeHandler}
-          />
+          h2oFrequency: 
+          <select
+            name='h2ofrequency'
+            value={form.h2ofrequency} 
+            onChange={changeHandler}   
+          >
+            <option value=''>--Please choose an option--</option>
+            <option value='daily'>Daily</option>
+            <option value='twice-daily'>Twice daily</option>
+            <option value='weekly'>Weekly</option>
+            <option value='twice-weekly'>Twice weekly</option>
+            <option value='monthly'>Monthly</option>
+            <option value='twice-monthly'>Twice Monthly</option>
+            <option value='bimonthly'>Bimonthly</option>
+            <option value='never'>never</option>
+          </select>
         </label>
         <button>Add Plant</button>
       </StyledForm>
