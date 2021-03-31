@@ -23,6 +23,9 @@ export const StyledApp = styled.header`
     border: 1px solid black;
     outline:none;
     transition: background-color .5s ease;
+    @media (max-width:1225px){
+      width:fit-content;
+    }
   }    
   & button:hover {
       transition: background-color 1s ease;

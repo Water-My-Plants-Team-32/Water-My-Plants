@@ -13,7 +13,7 @@ export const StyledForms = styled.div`
     }
     & input {
         margin-bottom: 2%;
-        width: 120%;
+        width: 150%;
         border-radius: 10rem;
         height: 20px;
         padding-left:5%;
