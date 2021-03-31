@@ -32,11 +32,14 @@ function App() {
 					<Link to='/signup'>
 						<button>Sign Up</button>
 					</Link>
+					<Link to="/create">
+						<button>Add Plant</button>
+					</Link>
 				</nav>
 			</StyledApp>
 			<Switch>
 				<Route path='/plants' component={PlantList} />
-				<Route exact path="/create" component={CreatePlant} />
+				<PrivateRoute exact path="/create" component={CreatePlant} />
 				<Route path='/signup' component={SignUp} />
 				<Route path='/login' component={Login} />
 				<Route exact path='/' component={Home} />
