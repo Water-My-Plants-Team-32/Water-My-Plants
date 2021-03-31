@@ -1,13 +1,16 @@
-import axios from "axios";
+import axios from 'axios';
+import { BASE_URL_JAVA as baseURL } from '../../Unit_2/BASE_URL';
 
 export const axiosWithAuth = () => {
-    const token = window.localStorage.getItem("token");
-    console.log(token);
+	const token = window.localStorage.getItem('token');
+	console.log(token);
 
-    return axios.create({
-        headers:{
-            Authorization: token,
-        },
-        baseURL: 'https://web39-water-my-plants-api.herokuapp.com',
-    });
+
+	return axios.create({
+		baseURL,
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
 };
+
