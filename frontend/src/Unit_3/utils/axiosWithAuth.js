@@ -3,8 +3,6 @@ import { BASE_URL_JAVA as baseURL } from '../../Unit_2/BASE_URL';
 
 export const axiosWithAuth = () => {
 	const token = window.localStorage.getItem('token');
-	console.log(token);
-
 
 	return axios.create({
 		baseURL,
@@ -13,4 +11,3 @@ export const axiosWithAuth = () => {
 		},
 	});
 };
-
