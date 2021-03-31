@@ -22,5 +22,11 @@ export const StyledApp = styled.header`
     border-radius: 10rem;
     border: 1px solid black;
     outline:none;
-  }
+    transition: background-color .5s ease;
+  }    
+  & button:hover {
+      transition: background-color 1s ease;
+      background-color: #76bf13;
+      cursor:pointer;
+    }
 `;

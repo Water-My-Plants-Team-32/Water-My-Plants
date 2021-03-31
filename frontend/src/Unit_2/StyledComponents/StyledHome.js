@@ -39,7 +39,15 @@ export const StyledHome = styled.div`
         font-size: 16px;
         letter-spacing: .08em;
         text-transform: uppercase;
-    } & footer{
+        transition: background-color .5s ease;
+    }
+    & button:hover {
+        transition: background-color 1s ease;
+        background-color: #76bf13;
+        cursor:pointer;
+    }
+
+    & footer{
         margin: 1%;
         justify-content: flex-start;
     }
