@@ -11,11 +11,6 @@ const PlantEditForm = ({ plantInfo, setIsEditing, updatePlants }) => {
 
 	const [formState, setFormState] = useState(initialFormState);
 
-	// const updatePlant = () => {
-	// 	// const newPlant = formState
-	// 	updatePlants(formState);
-	// };
-
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormState({ ...formState, [name]: value });
@@ -24,12 +19,9 @@ const PlantEditForm = ({ plantInfo, setIsEditing, updatePlants }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log('submitted');
-		//  axiosWithAuth().put(URL).then(call props fxn to update plants)
 		axiosWithAuth()
 			.put(`/api/plants/plant/${plantInfo.plantid}`, formState)
 			.then((res) => {
-				// console.log('res: ', res);
-				// updatePlant();
 				updatePlants({ ...formState, plantid: plantInfo.plantid });
 				setIsEditing(false);
 			})
@@ -58,13 +50,6 @@ const PlantEditForm = ({ plantInfo, setIsEditing, updatePlants }) => {
 						value={formState.species}
 						onChange={handleChange}
 					/>
-					{/* <input
-						name='watering'
-						type='number'
-						value={formState.watering}
-						onChange={handleChange}
-					/> */}
-					{/* <input type='file' /> */}
 					<select
 						name='h2ofrequency'
 						value={plantInfo.h2ofrequency}

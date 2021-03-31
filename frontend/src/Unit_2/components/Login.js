@@ -3,6 +3,7 @@ import { BASE_URL_NODE, BASE_URL_JAVA } from '../BASE_URL';
 import { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { StyledForms } from '../StyledComponents/StyledForms';
+import { useHistory } from 'react-router';
 
 // Yup form validation
 const loginSchema = yup.object().shape({
@@ -16,10 +17,12 @@ const loginSchema = yup.object().shape({
 const initialLogin = { username: '', password: '' };
 const initialDisabled = true;
 
-export default function Login(props) {
+const Login = (props) => {
 	const [disabled, setDisabled] = useState(initialDisabled);
 	const [loginErrors, setLoginErrors] = useState(initialLogin);
 	const [credentials, setCredentials] = useState(initialLogin);
+
+	const history = useHistory();
 
 	const change = (event) => {
 		const { name, value } = event.target;
@@ -71,10 +74,9 @@ export default function Login(props) {
 				}
 			)
 			.then((res) => {
-				console.log(res.data);
 				localStorage.setItem('token', res.data.access_token);
-				props.history.push('/plants');
-				console.log(credentials);
+				props.setIsLoggedIn(true);
+				history.push('/plants');
 			})
 			.catch((err) => {
 				setCredentials(initialLogin);
@@ -105,4 +107,6 @@ export default function Login(props) {
 			<p>{loginErrors.password}</p>
 		</StyledForms>
 	);
-}
+};
+
+export default Login;
