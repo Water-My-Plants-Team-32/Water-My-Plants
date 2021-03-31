@@ -13,7 +13,7 @@ export const StyledForms = styled.div`
     }
     & input {
         margin-bottom: 2%;
-        width: 120%;
+        width: 150%;
         border-radius: 10rem;
         height: 20px;
         padding-left:5%;
@@ -23,8 +23,14 @@ export const StyledForms = styled.div`
     }
     & button {
         margin: 2% 0 4% 0;
+        height: 25px;
+        width:130%;
+        border-radius: 10rem;
     }
     & p {
         margin: 0;
     }
-`;
+    & a {
+        font-size:.9rem;
+    }
+`
