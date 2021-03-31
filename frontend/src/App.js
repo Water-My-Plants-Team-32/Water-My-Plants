@@ -3,6 +3,7 @@ import SignUp from './Unit_2/components/SignUp';
 import Home from './Unit_2/components/Home';
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
+import CreatePlant from './Unit_3/components/CreatePlant';
 import PrivateRoute from './Unit_3/utils/PrivateRoute';
 import PlantList from './Unit_3/components/PlantList';
 import { StyledApp } from './Unit_2/StyledComponents/StyledApp';
@@ -56,10 +57,14 @@ function App() {
 					<Link to='/signup'>
 						<button>Sign Up</button>
 					</Link>
+					<Link to='/create'>
+						<button>Add Plant</button>
+					</Link>
 				</nav>
 			</StyledApp>
 			<Switch>
 				<PrivateRoute path='/plants' component={PlantList} />
+				<PrivateRoute exact path='/create' component={CreatePlant} />
 				<Route path='/signup' component={SignUp} />
 				<Route path='/login' component={Login} />
 				<Route exact path='/' component={Home} />
