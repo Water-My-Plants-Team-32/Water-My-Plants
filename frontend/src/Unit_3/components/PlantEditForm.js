@@ -28,7 +28,7 @@ const PlantEditForm = ({ plantInfo, setIsEditing, updatePlants }) => {
 		axiosWithAuth()
 			.put(`/api/plants/plant/${plantInfo.plantid}`, formState)
 			.then((res) => {
-				console.log('res: ', res);
+				// console.log('res: ', res);
 				// updatePlant();
 				updatePlants({ ...formState, plantid: plantInfo.plantid });
 				setIsEditing(false);
