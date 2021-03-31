@@ -25,6 +25,7 @@ export const StyledApp = styled.header`
     transition: background-color .5s ease;
     @media (max-width:1225px){
       width:fit-content;
+      padding: 10px 4%;
     }
   }    
   & button:hover {
