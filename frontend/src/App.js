@@ -26,7 +26,7 @@ function App() {
 				</nav>
 			</StyledApp>
 			<Switch>
-				<Route path='/plants' component={PlantList} />
+				<PrivateRoute path='/plants' component={PlantList} />
 				<Route path='/signup' component={SignUp} />
 				<Route path='/login' component={Login} />
 				<Route exact path='/' component={Home} />
