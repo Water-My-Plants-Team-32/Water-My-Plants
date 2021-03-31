@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
-import PlantCard from './PlantCard';
-
 import { StyledPlantList } from '../StyledComponents/StyledPlantList';
-
-import { plantsData } from '../../plantData';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { BASE_URL_JAVA as baseURL } from '../../Unit_2/BASE_URL';
+import PlantCard from './PlantCard';
 
 const PlantList = () => {
 	const [plantList, setPlantList] = useState([]);
@@ -14,32 +11,18 @@ const PlantList = () => {
 		axiosWithAuth()
 			.get(`${baseURL}/api/users/getuserinfo`)
 			.then((res) => {
-				console.log('plant list res: ', res);
 				setPlantList(res.data.plants);
 			})
 			.catch((err) => {
 				console.log('err: ', err);
 			});
-		// setPlantList(plantsData);
 	}, []);
 
-	// useEffect(() => {
-	// 	axiosWithAuth()
-	// 		.get(`${baseURL}/api/plants/plants`)
-	// 		.then((res) => {
-	// 			console.log('plant list res from plant-controller: ', res);
-	// 			// setPlantList(res.data.plants);
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log('err: ', err);
-	// 		});
-	// 	// setPlantList(plantsData);
-	// }, [plantList]);
-
 	const updatePlantList = (id) => {
-		const newPlantList = plantList.filter((plant) => plant.id !== id);
+		const newPlantList = plantList.filter((plant) => plant.plantid !== id);
 		setPlantList(newPlantList);
 	};
+
 	const updatePlants = (newPlant) => {
 		const newPlantList = plantList.map((plant) => {
 			if (plant.plantid === newPlant.plantid) {
@@ -57,7 +40,6 @@ const PlantList = () => {
 				plantInfo={plant}
 				updatePlantList={updatePlantList}
 				updatePlants={updatePlants}
-				// updatePlants={}
 			/>
 		));
 	};

@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useHistory } from "react-router-dom";
-import { StyledForm, ContainerDiv } from '../StyledComponents/StyledCreatePlant';
+import { useHistory } from 'react-router-dom';
+import {
+	StyledForm,
+	ContainerDiv,
+} from '../StyledComponents/StyledCreatePlant';
 
 const initialState = {
   nickname: "",
@@ -10,25 +13,26 @@ const initialState = {
 };
 
 const CreatePlant = () => {
-  const [form, setForm] = useState(initialState);
-  const [user, setUser] = useState({});
-  const history = useHistory();
+	const [form, setForm] = useState(initialState);
+	const [user, setUser] = useState({});
+	const history = useHistory();
 
-  useEffect(() => {
-      axiosWithAuth()
-          .get('/api/users/getuserinfo')
-          .then((response) => {
-            setUser(response.data)
-          })
-          .catch((error) => {
-            console.error(error)
-          })
-  },[])
 
-  const changeHandler = (event) => {
-    const value = event.target.value;
-    setForm({ ...form, [event.target.name]: value });
-  };
+	useEffect(() => {
+		axiosWithAuth()
+			.get('/api/users/getuserinfo')
+			.then((response) => {
+				setUser(response.data);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	}, []);
+
+	const changeHandler = (event) => {
+		const value = event.target.value;
+		setForm({ ...form, [event.target.name]: value });
+	};
 
   const submitAddPlant = (e) => {
     e.preventDefault();
@@ -90,6 +94,7 @@ const CreatePlant = () => {
       </StyledForm>
     </ContainerDiv>
   );
+
 };
 
 export default CreatePlant;
