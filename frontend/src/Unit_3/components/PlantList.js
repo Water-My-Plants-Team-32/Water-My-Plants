@@ -19,7 +19,7 @@ const PlantList = () => {
 	}, []);
 
 	const updatePlantList = (id) => {
-		const newPlantList = plantList.filter((plant) => plant.id !== id);
+		const newPlantList = plantList.filter((plant) => plant.plantid !== id);
 		setPlantList(newPlantList);
 	};
 
@@ -31,7 +31,6 @@ const PlantList = () => {
 			}
 			return plant;
 		});
-		console.log('newPlantList: ', newPlantList);
 		setPlantList(newPlantList);
 	};
 

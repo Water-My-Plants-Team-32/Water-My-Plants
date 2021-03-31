@@ -1,15 +1,23 @@
 import { useState } from 'react';
 import PlantEditForm from './PlantEditForm';
 import { StyledPlantCard } from '../StyledComponents/StyledPlantCard';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const PlantCard = ({ plantInfo, updatePlantList, updatePlants }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const handleDelete = (id) => {
-		updatePlantList(id);
+		axiosWithAuth()
+			.delete(`/api/plants/plant/${id}`)
+			.then((res) => {
+				console.log('delete res: ', res);
+				updatePlantList(id);
+			})
+			.catch((err) => {
+				console.log('err: ', err);
+			});
 	};
-	const handleEdit = (newPlant) => {
+	const handleEdit = () => {
 		setIsEditing(!isEditing);
-		// updatePlant(newPlant);
 	};
 
 	return (
@@ -29,12 +37,12 @@ const PlantCard = ({ plantInfo, updatePlantList, updatePlants }) => {
 					<img src={plantInfo.img} alt={plantInfo.name} />
 					<p>Watering Frequency: {plantInfo.h2ofrequency}</p>
 					<div className='card-btn-container'>
-						<button className='edit' onClick={() => handleEdit(plantInfo)}>
+						<button className='edit' onClick={() => handleEdit()}>
 							Edit
 						</button>
 						<button
 							className='delete'
-							onClick={() => handleDelete(plantInfo.id)}
+							onClick={() => handleDelete(plantInfo.plantid)}
 						>
 							Delete
 						</button>

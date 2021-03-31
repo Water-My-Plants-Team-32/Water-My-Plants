@@ -18,11 +18,10 @@ const PlantEditForm = ({ plantInfo, setIsEditing, updatePlants }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('submitted');
 		axiosWithAuth()
 			.put(`/api/plants/plant/${plantInfo.plantid}`, formState)
 			.then((res) => {
-				updatePlants({ ...formState, plantid: plantInfo.plantid });
+				updatePlants(res.data);
 				setIsEditing(false);
 			})
 			.catch((err) => {

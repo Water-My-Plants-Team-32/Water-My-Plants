@@ -45,7 +45,7 @@ const CreatePlant = () => {
 			.post(`/api/plants/plant/${user.userid}`, addPlant)
 			.then((res) => {
 				console.log(res);
-				history.push('/plantlist');
+				history.push('/plants');
 			})
 			.catch((err) => console.log(err));
 	};

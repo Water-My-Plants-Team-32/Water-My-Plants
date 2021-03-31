@@ -11,6 +11,9 @@ import { useState } from 'react';
 import { axiosWithAuth } from './Unit_3/utils/axiosWithAuth';
 
 function App() {
+	const [isLoggedIn, setIsLoggedIn] = useState(
+		localStorage.getItem('token') !== null
+	);
 	const logout = () => {
 		axiosWithAuth()
 			.get('/api/auth/logout')
@@ -22,7 +25,6 @@ function App() {
 				console.log('err: ', err);
 			});
 	};
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	return (
 		<div className='app'>
