@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL_JAVA as baseURL } from '../../Unit_2/BASE_URL';
+import { baseURL } from './baseURL';
 
 export const axiosWithAuth = () => {
 	const token = window.localStorage.getItem('token');
