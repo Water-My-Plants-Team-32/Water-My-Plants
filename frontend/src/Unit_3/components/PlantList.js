@@ -3,10 +3,10 @@ import { StyledPlantList } from '../StyledComponents/StyledPlantList';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { baseURL } from '../../Unit_3/utils/baseURL';
 import PlantCard from './PlantCard';
+import { Link } from 'react-router-dom';
 
 const PlantList = () => {
 	const [plantList, setPlantList] = useState([]);
-
 	useEffect(() => {
 		axiosWithAuth()
 			.get(`${baseURL}/api/users/getuserinfo`)
@@ -44,13 +44,20 @@ const PlantList = () => {
 		));
 	};
 
+	const renderAddPlants = () => {
+		return (
+			<div>
+				<h1>Let's add some plants!</h1>
+				<Link to='/create'>
+					<button>Add Plants</button>
+				</Link>
+			</div>
+		);
+	};
+
 	return (
 		<StyledPlantList>
-			{plantList.length === 0 ? (
-				<h2>Get started by adding plants!</h2>
-			) : (
-				renderPlantList()
-			)}
+			{plantList.length === 0 ? renderAddPlants() : renderPlantList()}
 		</StyledPlantList>
 	);
 };
