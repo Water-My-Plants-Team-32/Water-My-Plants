@@ -64,7 +64,9 @@ function App() {
 			<Switch>
 				<PrivateRoute path='/plants' component={PlantList} />
 				<PrivateRoute exact path='/create' component={CreatePlant} />
-				<Route path='/signup' component={SignUp} />
+				<Route path='/signup'>
+					<SignUp setIsLoggedIn={setIsLoggedIn} />
+				</Route>
 				<Route path='/login'>
 					<Login setIsLoggedIn={setIsLoggedIn} />
 				</Route>

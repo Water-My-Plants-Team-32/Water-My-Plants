@@ -3,6 +3,7 @@ import { baseURL } from '../../Unit_3/utils/baseURL';
 import { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { StyledForms } from '../StyledComponents/StyledForms';
+import { useHistory } from 'react-router-dom';
 
 const signUpSchema = yup.object().shape({
 	username: yup
@@ -24,10 +25,11 @@ const initialSignUp = {
 	passwordConfirm: '',
 };
 
-export default function Login(props) {
+const SignUp = (props) => {
 	const [signUpErrors, setSignUpErrors] = useState(initialSignUp);
 	const [newUser, setNewUser] = useState(initialSignUp);
 	const [disabled, setDisabled] = useState(initialDisabled);
+	const history = useHistory();
 
 	const signUpChange = (event) => {
 		const { name, value } = event.target;
@@ -81,10 +83,10 @@ export default function Login(props) {
 		axios
 			.post(`${baseURL}/createnewuser`, toRegister)
 			.then((res) => {
-				setNewUser(initialSignUp);
+				// setNewUser(initialSignUp);
 				localStorage.setItem('token', res.data.access_token);
-				props.history.push('/plants');
-				console.log(res);
+				props.setIsLoggedIn(true);
+				history.push('/plants');
 			})
 			.catch((err) => {
 				console.log(err);
@@ -130,4 +132,6 @@ export default function Login(props) {
 			<p>{signUpErrors.passwordConfirm}</p>
 		</StyledForms>
 	);
-}
+};
+
+export default SignUp;
