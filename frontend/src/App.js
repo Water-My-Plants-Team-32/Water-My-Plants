@@ -38,7 +38,7 @@ function App() {
 						<>
 							<Link to='/'>
 								<button
-									style={{ color: 'white', backgroundColor: '#98EA28' }}
+									className='log'
 									onClick={logout}
 								>
 									Logout
@@ -54,7 +54,7 @@ function App() {
 					) : (
 						<>
 							<Link to='/login'>
-								<button style={{ color: 'white', backgroundColor: '#98EA28' }}>
+								<button className='log'>
 									Login
 								</button>
 							</Link>
@@ -68,8 +68,13 @@ function App() {
 			<Switch>
 				<PrivateRoute path='/plants' component={PlantList} />
 				<PrivateRoute exact path='/create' component={CreatePlant} />
+
 				<PrivateRoute path='/profile' component={UserProfile} />
-				<Route path='/signup' component={SignUp} />
+
+				<Route path='/signup'>
+					<SignUp setIsLoggedIn={setIsLoggedIn} />
+				</Route>
+
 				<Route path='/login'>
 					<Login setIsLoggedIn={setIsLoggedIn} />
 				</Route>

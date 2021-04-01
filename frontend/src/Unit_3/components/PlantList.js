@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { StyledPlantList } from '../StyledComponents/StyledPlantList';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { BASE_URL_JAVA as baseURL } from '../../Unit_2/BASE_URL';
+import { baseURL } from '../../Unit_3/utils/baseURL';
 import PlantCard from './PlantCard';
 
 const PlantList = () => {
@@ -44,7 +44,15 @@ const PlantList = () => {
 		));
 	};
 
-	return <StyledPlantList>{renderPlantList()}</StyledPlantList>;
+	return (
+		<StyledPlantList>
+			{plantList.length === 0 ? (
+				<h2>Get started by adding plants!</h2>
+			) : (
+				renderPlantList()
+			)}
+		</StyledPlantList>
+	);
 };
 
 export default PlantList;
