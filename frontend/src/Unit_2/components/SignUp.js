@@ -84,7 +84,7 @@ export default function Login(props) {
 			.then((res) => {
 				setNewUser(initialSignUp);
 				localStorage.setItem('token', res.data.access_token);
-				props.history.push('/plants');
+				props.history.push('/create');
 				console.log(res);
 			})
 			.catch((err) => {
@@ -129,9 +129,10 @@ export default function Login(props) {
 					<p>Already have an account?</p>
 				</Link>
 			</form>
-			<p>{signUpErrors.username}</p>
-			<p>{signUpErrors.password}</p>
-			<p>{signUpErrors.passwordConfirm}</p>
+			<p className='errors'>{signUpErrors.username}</p>
+			<p className='errors'>{signUpErrors.phonenumber}</p>
+			<p className='errors'>{signUpErrors.password}</p>
+			<p className='errors'>{signUpErrors.passwordConfirm}</p>
 		</StyledForms>
 	);
 }

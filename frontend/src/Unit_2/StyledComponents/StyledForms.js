@@ -27,11 +27,17 @@ export const StyledForms = styled.div`
         width:130%;
         outline:10rem;
         border-radius: 10rem;
+        background-color: #f4f4f4;
+        transition: background-color 1s ease;
+    }
+    & button:hover {
+        background-color: #d6d6d6;
+        transition: background-color 1s ease;
     }
     & p {
         margin: 0;
     }
-    & a {
-        font-size:.9rem;
+    & .errors {
+        color:red;
     }
 `
