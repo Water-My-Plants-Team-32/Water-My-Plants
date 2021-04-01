@@ -15,7 +15,6 @@ export const StyledApp = styled.header`
     text-align:end;
   }
   & button{
-    width: 15%;
     width:fit-content;
     padding: 10px 3%;
     background-color:#98EA28;
