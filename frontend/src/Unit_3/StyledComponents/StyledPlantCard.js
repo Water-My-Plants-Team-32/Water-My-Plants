@@ -7,13 +7,18 @@ export const StyledPlantCard = styled.div`
 	align-items: center;
 	width: 35%;
 	min-width: 350px;
+	max-width: 385px;
 	padding: 1%;
 	font-size: 2rem;
-	border: 2px solid #33333333;
+	border: 2px solid #22222233;
 	border-radius: 10px;
 	margin-bottom: 30px;
+	/* height: 45%; */
+	/* max-height: 250px; */
+	background: #03fc6211;
 	& h2 {
 		font-size: 2.3rem;
+		margin: 0;
 	}
 	& h3 {
 		font-size: 1.5rem;
