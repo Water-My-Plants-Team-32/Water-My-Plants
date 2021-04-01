@@ -92,51 +92,6 @@ export default function Login(props) {
 			});
 	};
 
-<<<<<<< HEAD
-    return (
-        <StyledForms>
-            <h1>Sign Up</h1>
-            <form onSubmit={signUpSubmit}>
-                <input 
-                    name='username'
-                    type='text'
-                    value={newUser.username}
-                    onChange={signUpChange}
-                    placeholder='Username'
-                />
-                <input 
-                    name='phonenumber'
-                    type='tel'
-                    value={newUser.phonenumber}
-                    onChange={signUpChange}
-                    placeholder='Enter a phone number'
-                />
-                <input 
-                    name='password'
-                    type='password'
-                    value={newUser.password}
-                    onChange={signUpChange}
-                    placeholder='Create a password'
-                />
-                <input 
-                    name='passwordConfirm'
-                    type='password'
-                    value={newUser.passwordConfirm}
-                    onChange={signUpChange}
-                    placeholder='Confirm your password'
-                />
-                <button disabled={disabled}>Sign Up</button>
-				<Link to='/login'>
-					<p>Already have an account?</p>
-				</Link>
-            </form>
-            <p>{signUpErrors.username}</p>
-            <p>{signUpErrors.password}</p>
-            <p>{signUpErrors.passwordConfirm}</p>
-        </StyledForms>
-    )
-}
-=======
 	return (
 		<StyledForms>
 			<h1>Sign Up</h1>
@@ -170,6 +125,9 @@ export default function Login(props) {
 					placeholder='Confirm your password'
 				/>
 				<button disabled={disabled}>Sign Up</button>
+				<Link to='/login'>
+					<p>Already have an account?</p>
+				</Link>
 			</form>
 			<p>{signUpErrors.username}</p>
 			<p>{signUpErrors.password}</p>
@@ -177,4 +135,4 @@ export default function Login(props) {
 		</StyledForms>
 	);
 }
->>>>>>> 6b41d73376097b1ec86d6bb79a0485d2a8cad931
+
