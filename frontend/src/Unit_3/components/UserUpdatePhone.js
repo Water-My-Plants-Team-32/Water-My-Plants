@@ -22,7 +22,7 @@ const UserUpdatePhone = ({user, setIsUpdating, updateUserPhone}) => {
              .put(`/api/users/user/${user.userid}`, phone)
              .then((response) => {
                  console.log(response);
-                 updateUserPhone(response.data);
+                 updateUserPhone(response.data.phonenumber);
                  setIsUpdating(false);
              })
              .catch((error) => {

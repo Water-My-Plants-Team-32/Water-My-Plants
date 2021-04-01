@@ -22,17 +22,7 @@ const UserProfile = () => {
     },[])
 
     const updateUserPhone = (newPhone) => {
-		// const newPhonenumber = user.map((info) => {
-		// 	if (info.userid === newPhone.userid) {
-		// 		return newPhone;
-		// 	}
-		// 	return user;
-		// });
-        const newPhonenumber = user.phonenumber
-        if(user.userid === newPhone.userid){
-            return newPhone
-        }
-		setUser(newPhonenumber);
+		setUser({...user, phonenumber: newPhone});
 	};
 
     const handleUpdate = () => {
