@@ -67,11 +67,14 @@ const SignUp = (props) => {
 	useEffect(() => {
 		signUpSchema.isValid(newUser).then((valid) => {
 			setDisabled(!valid);
-			return () => {
-				setNewUser(initialSignUp)
-			}
 		});
 	}, [newUser]);
+
+	useEffect(() => {
+		return () => {
+			setNewUser(initialSignUp);
+		};
+	}, []);
 
 	// Sign up Submit
 	const signUpSubmit = (event) => {
@@ -91,7 +94,7 @@ const SignUp = (props) => {
 				// setNewUser(initialSignUp);
 				localStorage.setItem('token', res.data.access_token);
 				props.setIsLoggedIn(true);
-				history.push('/create')
+				history.push('/create');
 			})
 			.catch((err) => {
 				console.log(err);
