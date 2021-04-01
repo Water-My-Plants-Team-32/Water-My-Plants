@@ -66,11 +66,14 @@ const SignUp = (props) => {
 	useEffect(() => {
 		signUpSchema.isValid(newUser).then((valid) => {
 			setDisabled(!valid);
-			return () => {
-				setNewUser(initialSignUp);
-			};
 		});
 	}, [newUser]);
+
+	useEffect(() => {
+		return () => {
+			setNewUser(initialSignUp);
+		};
+	}, []);
 
 	// Sign up Submit
 	const signUpSubmit = (event) => {
