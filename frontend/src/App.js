@@ -4,6 +4,7 @@ import Home from './Unit_2/components/Home';
 import './App.css';
 import { Route, Link, Switch } from 'react-router-dom';
 import CreatePlant from './Unit_3/components/CreatePlant';
+import UserProfile from './Unit_3/components/UserProfile';
 import PrivateRoute from './Unit_3/utils/PrivateRoute';
 import PlantList from './Unit_3/components/PlantList';
 import { StyledApp } from './Unit_2/StyledComponents/StyledApp';
@@ -43,8 +44,11 @@ function App() {
 									Logout
 								</button>
 							</Link>
+							<Link to='/profile'>
+								<button style={{ color: 'white', backgroundColor: '#98EA28' }}>Profile</button>
+							</Link>
 							<Link to='/create'>
-								<button>Add Plant</button>
+								<button style={{ color: 'white', backgroundColor: '#98EA28' }}>Add Plant</button>
 							</Link>
 						</>
 					) : (
@@ -64,9 +68,13 @@ function App() {
 			<Switch>
 				<PrivateRoute path='/plants' component={PlantList} />
 				<PrivateRoute exact path='/create' component={CreatePlant} />
+
+				<PrivateRoute path='/profile' component={UserProfile} />
+
 				<Route path='/signup'>
 					<SignUp setIsLoggedIn={setIsLoggedIn} />
 				</Route>
+
 				<Route path='/login'>
 					<Login setIsLoggedIn={setIsLoggedIn} />
 				</Route>
