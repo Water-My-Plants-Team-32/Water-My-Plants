@@ -44,7 +44,15 @@ const PlantList = () => {
 		));
 	};
 
-	return <StyledPlantList>{renderPlantList()}</StyledPlantList>;
+	return (
+		<StyledPlantList>
+			{plantList.length === 0 ? (
+				<h2>Get started by adding plants!</h2>
+			) : (
+				renderPlantList()
+			)}
+		</StyledPlantList>
+	);
 };
 
 export default PlantList;
