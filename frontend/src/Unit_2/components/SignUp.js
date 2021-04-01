@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { StyledForms } from '../StyledComponents/StyledForms';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+
 
 const signUpSchema = yup.object().shape({
 	username: yup
@@ -86,7 +88,8 @@ const SignUp = (props) => {
 				// setNewUser(initialSignUp);
 				localStorage.setItem('token', res.data.access_token);
 				props.setIsLoggedIn(true);
-				history.push('/plants');
+				props.history.push('/create');
+				console.log(res);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -126,12 +129,17 @@ const SignUp = (props) => {
 					placeholder='Confirm your password'
 				/>
 				<button disabled={disabled}>Sign Up</button>
+				<Link to='/login'>
+					<p>Already have an account?</p>
+				</Link>
 			</form>
-			<p>{signUpErrors.username}</p>
-			<p>{signUpErrors.password}</p>
-			<p>{signUpErrors.passwordConfirm}</p>
+			<p className='errors'>{signUpErrors.username}</p>
+			<p className='errors'>{signUpErrors.phonenumber}</p>
+			<p className='errors'>{signUpErrors.password}</p>
+			<p className='errors'>{signUpErrors.passwordConfirm}</p>
 		</StyledForms>
 	);
 };
 
 export default SignUp;
+

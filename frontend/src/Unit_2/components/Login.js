@@ -103,8 +103,8 @@ const Login = (props) => {
 				/>
 				<button disabled={disabled}>Login</button>
 			</form>
-			<p>{loginErrors.username}</p>
-			<p>{loginErrors.password}</p>
+			<p className='errors'>{loginErrors.username}</p>
+			<p className='errors'>{loginErrors.password}</p>
 		</StyledForms>
 	);
 };
