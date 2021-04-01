@@ -45,10 +45,10 @@ function App() {
 								</button>
 							</Link>
 							<Link to='/profile'>
-								<button style={{ color: 'white', backgroundColor: '#98EA28' }}>Profile</button>
+								<button>Profile</button>
 							</Link>
 							<Link to='/create'>
-								<button style={{ color: 'white', backgroundColor: '#98EA28' }}>Add Plant</button>
+								<button>Add Plant</button>
 							</Link>
 						</>
 					) : (
