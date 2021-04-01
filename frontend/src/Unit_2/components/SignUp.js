@@ -3,6 +3,7 @@ import { baseURL } from '../../Unit_3/utils/baseURL';
 import { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { StyledForms } from '../StyledComponents/StyledForms';
+import { Link } from 'react-router-dom'
 
 const signUpSchema = yup.object().shape({
 	username: yup
@@ -124,6 +125,9 @@ export default function Login(props) {
 					placeholder='Confirm your password'
 				/>
 				<button disabled={disabled}>Sign Up</button>
+				<Link to='/login'>
+					<p>Already have an account?</p>
+				</Link>
 			</form>
 			<p>{signUpErrors.username}</p>
 			<p>{signUpErrors.password}</p>
@@ -131,3 +135,4 @@ export default function Login(props) {
 		</StyledForms>
 	);
 }
+

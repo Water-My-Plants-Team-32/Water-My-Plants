@@ -37,7 +37,7 @@ function App() {
 						<>
 							<Link to='/'>
 								<button
-									style={{ color: 'white', backgroundColor: '#98EA28' }}
+									className='log'
 									onClick={logout}
 								>
 									Logout
@@ -50,7 +50,7 @@ function App() {
 					) : (
 						<>
 							<Link to='/login'>
-								<button style={{ color: 'white', backgroundColor: '#98EA28' }}>
+								<button className='log'>
 									Login
 								</button>
 							</Link>
