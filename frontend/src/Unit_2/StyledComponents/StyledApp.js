@@ -16,28 +16,24 @@ export const StyledApp = styled.header`
   }
   & button{
     width: 15%;
-    margin: 4% 1%;
-    padding:10px;
+    width:fit-content;
+    padding: 10px 3%;
     background-color:#98EA28;
     font-size: 1.2rem;
     border-radius: 10rem;
     border: 1px solid black;
     outline:none;
     transition: background-color .5s ease;
-    @media (max-width:1225px){
-      width:fit-content;
-      padding: 10px 4%;
-    }
   }    
   & button:hover {
-      transition: background-color 1s ease;
-      background-color: #76bf13;
-      cursor:pointer;
+    transition: background-color 1s ease;
+    background-color: #76bf13;
+    cursor:pointer;
     }
   & .log{
-        width: 15%;
     margin: 4% 1%;
-    padding:10px;
+    width:fit-content;
+    padding: 10px 4%;
     background-color:#f2f2f2;
     font-size: 1.2rem;
     border-radius: 10rem;

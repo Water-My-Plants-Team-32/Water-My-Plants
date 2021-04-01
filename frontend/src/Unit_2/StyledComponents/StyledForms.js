@@ -25,6 +25,7 @@ export const StyledForms = styled.div`
         margin: 2% 0 4% 0;
         height: 25px;
         width:130%;
+        outline:10rem;
         border-radius: 10rem;
     }
     & p {
