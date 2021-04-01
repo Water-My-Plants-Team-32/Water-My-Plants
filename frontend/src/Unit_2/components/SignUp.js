@@ -66,6 +66,9 @@ const SignUp = (props) => {
 	useEffect(() => {
 		signUpSchema.isValid(newUser).then((valid) => {
 			setDisabled(!valid);
+			return () => {
+				setNewUser(initialSignUp);
+			};
 		});
 	}, [newUser]);
 
@@ -87,7 +90,7 @@ const SignUp = (props) => {
 				// setNewUser(initialSignUp);
 				localStorage.setItem('token', res.data.access_token);
 				props.setIsLoggedIn(true);
-				props.history.push('/create');
+				history.push('/create');
 			})
 			.catch((err) => {
 				console.log(err);
