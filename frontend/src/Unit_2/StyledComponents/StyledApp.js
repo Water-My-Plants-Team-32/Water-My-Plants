@@ -15,7 +15,7 @@ export const StyledApp = styled.header`
     text-align:end;
   }
   & button{
-    width: 15%;
+    margin: 4% 0 4% 1%;
     width:fit-content;
     padding: 10px 3%;
     background-color:#98EA28;
@@ -31,7 +31,6 @@ export const StyledApp = styled.header`
     cursor:pointer;
     }
   & .log{
-    margin: 4% 1%;
     width:fit-content;
     padding: 10px 4%;
     background-color:#f2f2f2;

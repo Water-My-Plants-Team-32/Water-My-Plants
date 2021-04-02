@@ -29,10 +29,13 @@ export const StyledForms = styled.div`
         border-radius: 10rem;
         background-color: #f4f4f4;
         transition: background-color 1s ease;
+        transition: color 1s ease;
     }
     & button:hover {
         background-color: #d6d6d6;
         transition: background-color 1s ease;
+        color:white;
+        transition: color 1s ease;
     }
     & p {
         margin: 0;

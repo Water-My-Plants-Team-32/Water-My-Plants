@@ -15,7 +15,7 @@ const signUpSchema = yup.object().shape({
 	password: yup.string().min(6, 'Password must be at least 6 chars long.'),
 	passwordConfirm: yup
 		.string()
-		.oneOf([yup.ref('password'), null], 'Passwords must match'),
+		.oneOf([yup.ref('password'), null], ),
 });
 
 const initialDisabled = true;
@@ -30,6 +30,7 @@ const SignUp = (props) => {
 	const [signUpErrors, setSignUpErrors] = useState(initialSignUp);
 	const [newUser, setNewUser] = useState(initialSignUp);
 	const [disabled, setDisabled] = useState(initialDisabled);
+	
 	const history = useHistory();
 
 	const signUpChange = (event) => {
@@ -140,8 +141,7 @@ const SignUp = (props) => {
 			<p className='errors'>{signUpErrors.username}</p>
 			<p className='errors'>{signUpErrors.phonenumber}</p>
 			<p className='errors'>{signUpErrors.password}</p>
-			<p className='errors'>{signUpErrors.passwordConfirm}</p>
-		</StyledForms>
+ 		</StyledForms>
 	);
 };
 
