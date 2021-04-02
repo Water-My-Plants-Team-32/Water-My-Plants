@@ -7,7 +7,7 @@ export const axiosWithAuth = () => {
 	return axios.create({
 		baseURL,
 		headers: {
-			Authorization: `Bearer ${token}`,
+			Authorization: `${token}`,
 		},
 	});
 };
