@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const ChangeUserPass = ({ user, setChanging, changeUserPass, setSuccess }) => {
@@ -9,10 +9,6 @@ const ChangeUserPass = ({ user, setChanging, changeUserPass, setSuccess }) => {
 
 	const [password, setPassword] = useState(initialPasswordState);
 
-	useEffect(() => {
-		console.log('password: ', password);
-	});
-
 	const handleChange = (event) => {
 		const value = event.target.value;
 		setPassword({ ...password, [event.target.name]: value });
@@ -20,11 +16,9 @@ const ChangeUserPass = ({ user, setChanging, changeUserPass, setSuccess }) => {
 
 	const handleChangePassword = (event) => {
 		event.preventDefault();
-		console.log('userid: ', user.userid);
 		axiosWithAuth()
 			.put(`/api/users/user/${user.userid}`, password)
 			.then((response) => {
-				console.log(password);
 				changeUserPass(response.data.password);
 				setChanging(false);
 				setSuccess('Password updated.');

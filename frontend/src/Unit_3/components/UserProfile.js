@@ -15,7 +15,6 @@ const UserProfile = () => {
 		axiosWithAuth()
 			.get('/api/users/getuserinfo')
 			.then((response) => {
-				console.log(response.data);
 				setUser(response.data);
 			})
 			.catch((err) => {
@@ -36,7 +35,6 @@ const UserProfile = () => {
 	};
 
 	const handleChangePass = () => {
-		console.log('clicked');
 		setChanging(!isChanging);
 	};
 
@@ -83,7 +81,7 @@ const UserProfile = () => {
 				</div>
 			</div>
 			<div className='buttons'>
-				<button onClick={handeleCancel}>Cancel</button>
+				<button onClick={handleCancel}>Cancel</button>
 			</div>
 		</div>
 	);
